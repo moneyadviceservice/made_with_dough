@@ -34,6 +34,6 @@ gem 'pry', group: [:development, :test]
 
 gem 'redcarpet'
 
-gem 'dough-ruby', path: '../'
+gem 'dough-ruby', github: 'moneyadviceservice/dough'
 
 gem 'bowndler', github: 'moneyadviceservice/bowndler'

@@ -5,8 +5,9 @@ GIT
     bowndler (1.0.2)
       thor
 
-PATH
-  remote: ../
+GIT
+  remote: git://github.com/moneyadviceservice/dough.git
+  revision: 4c39a088feca62532f7e95b0ca4c1ef55bfc8951
   specs:
     dough-ruby (4.0.0)
       activesupport
