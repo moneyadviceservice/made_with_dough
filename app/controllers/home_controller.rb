@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @components = Dir['../docs/*.md'].map { |path| Component.new(path) }
+    @components = Dir["#{Rails.root}/docs/*.md"].map { |path| Component.new(path) }
   end
 
   class Component
@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     end
 
     def code_path
-      "../docs/helpers/#{name.camelize}.erb"
+      "docs/helpers/#{name.camelize}.erb"
     end
 
     def code_raw_html
@@ -23,7 +23,7 @@ class HomeController < ApplicationController
     end
 
     def name
-      path.match(/\.\.\/docs\/(.*)\.md/)[1].underscore
+      path.match(/\/docs\/(.*)\.md/)[1].underscore
     end
 
     def doc_markdown
