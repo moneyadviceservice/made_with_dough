@@ -138,7 +138,7 @@ PLATFORMS
 DEPENDENCIES
   bowndler!
   coffee-rails (~> 4.0.0)
-  dough-ruby!
+  dough-ruby (~> 4.0)!
   jbuilder (~> 2.0)
   jquery-rails
   pry
