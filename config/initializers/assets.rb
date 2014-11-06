@@ -3,18 +3,19 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w(
-  enhanced.css
-  enhanced_fixed.css
-  enhanced_responsive.css
   requirejs/require.js
   jquery/dist/jquery.js
   eventsWithPromises/src/eventsWithPromises.js
   rsvp/rsvp.js
   jqueryThrottleDebounce/jquery.ba-throttle-debounce.js
   dough/assets/js/**/*.js
+  dough/assets/stylesheets/basic.css
+  dough/assets/stylesheets/font_files.css
+  dough/assets/stylesheets/font_base64.css
   prism.js
 )
