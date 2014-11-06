@@ -17,5 +17,7 @@ Rails.application.config.assets.precompile += %w(
   dough/assets/stylesheets/basic.css
   dough/assets/stylesheets/font_files.css
   dough/assets/stylesheets/font_base64.css
+  enhanced_fixed.css
+  enhanced_responsive.css
   prism.js
 )
