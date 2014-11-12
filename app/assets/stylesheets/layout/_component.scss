@@ -1,6 +1,8 @@
 .l-component {
   margin-top: baseline-unit(6);
   margin-bottom: baseline-unit(10);
+  background: $component-background-color;
+  padding: baseline-unit(4);
 
   max-width: $mq-m;
 }
