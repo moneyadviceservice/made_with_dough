@@ -32,6 +32,7 @@ gem 'unicorn', group: :production
 # gem 'capistrano-rails', group: :development
 
 gem 'pry', group: [:development, :test]
+gem 'mas-development_dependencies', github: 'moneyadviceservice/mas-development_dependencies', group: [:development, :test]
 
 gem 'redcarpet'
 
