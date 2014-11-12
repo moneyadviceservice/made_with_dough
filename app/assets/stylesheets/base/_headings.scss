@@ -22,7 +22,6 @@ h2 {
 
 h3 {
   @include font-size(20);
-  // border-bottom: 1px solid $base-horizontal-rule-color;
   margin-top: baseline-unit(6);
   margin-bottom: baseline-unit(3);
 }
