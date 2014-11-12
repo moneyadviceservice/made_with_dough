@@ -1,6 +1,8 @@
+require 'dough_gem_info'
+
 class HomeController < ApplicationController
   def index
-    @components = Dir["#{Rails.root}/docs/*.md"].map { |path| Component.new(path) }
+    @components ||= dough_documents.map { |path| Component.new(path) }
   end
 
   class Component
@@ -11,7 +13,7 @@ class HomeController < ApplicationController
     end
 
     def code_path
-      "docs/helpers/#{name.camelize}.erb"
+      "#{DoughGemInfo.docs_path}/helpers/#{name.camelize}.erb"
     end
 
     def code_raw_html
@@ -23,7 +25,7 @@ class HomeController < ApplicationController
     end
 
     def name
-      path.match(/\/docs\/(.*)\.md/)[1].underscore
+      path.match(*/\/docs\/(.*)\.md/)[1].underscore
     end
 
     def doc_markdown
@@ -35,5 +37,11 @@ class HomeController < ApplicationController
       parser = Redcarpet::Markdown.new(renderer)
       parser.render doc_markdown
     end
+  end
+
+  protected
+
+  def dough_documents
+    Dir[File.join(DoughGemInfo.docs_path, '*.md')]
   end
 end
