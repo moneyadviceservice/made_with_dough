@@ -1,4 +1,5 @@
 require 'dough_gem_info'
+require "dough/snippet_render"
 
 class DoughExample
   attr_reader :path
@@ -28,7 +29,7 @@ class DoughExample
   end
 
   def doc_html
-    renderer = Redcarpet::Render::HTML
+    renderer = DoughSnippetRender
     parser = Redcarpet::Markdown.new(renderer)
     parser.render doc_markdown
   end
