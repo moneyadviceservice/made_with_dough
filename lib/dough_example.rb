@@ -21,7 +21,11 @@ class DoughExample
   end
 
   def name
-    path.match(*/\/docs\/(.*)\.md/)[1].underscore
+    extract_name_from_filename.underscore
+  end
+
+  def slug
+    extract_name_from_filename.parameterize.gsub('_', '-')
   end
 
   def doc_markdown
@@ -32,5 +36,11 @@ class DoughExample
     renderer = DoughSnippetRender
     parser = Redcarpet::Markdown.new(renderer)
     parser.render doc_markdown
+  end
+
+  protected
+
+  def extract_name_from_filename
+    path.match(*/\/docs\/(.*)\.md/)[1]
   end
 end
