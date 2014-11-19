@@ -20,7 +20,7 @@ class DoughExample
   end
 
   def name
-    path.match(*/\/docs\/(.*)\.md/)[1].underscore
+    extract_name_from_file || ''
   end
 
   def doc_markdown
@@ -31,5 +31,11 @@ class DoughExample
     renderer = Redcarpet::Render::HTML
     parser = Redcarpet::Markdown.new(renderer)
     parser.render(doc_markdown)
+  end
+
+  protected
+
+  def extract_name_from_file
+    path.match(%r{^*/docs/(.*)\.md$}).first
   end
 end
