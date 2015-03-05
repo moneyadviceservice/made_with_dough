@@ -4,6 +4,8 @@
 @import 'dough/assets/stylesheets/common';
 @import 'dough/assets/stylesheets/optional';
 
+@import 'components/dough_theme/*/_all.scss';
+
 // Prism code syntax highlighting
 @import 'prism';
 
