@@ -1,12 +1,12 @@
 /**
  * # Element visibility toggler.
  *
- * Requires an element to have a data-dough-toggler attribute. The application
+ * Requires an element to have a data-dough-component="Collapsable" attribute. The application
  * file will spawn an instance of this class for each element it finds on the page.
  *
  * Events used: toggler:toggled(element, isShown) [Event for when the toggler is doing its work]
  *
- * See test fixture for sample markup - /test/fixtures/VisibilityToggler.html
+ * See test fixture for sample markup - /spec/js/fixtures/Collapsable.html
  */
 
 /**
@@ -95,7 +95,7 @@ define(['jquery', 'DoughBaseComponent', 'eventsWithPromises'], function($, Dough
    * @param {Boolean} isActive Set to 'true' to bind to events, 'false' to unbind.
    */
   CollapsableProto.setListeners = function(isActive) {
-    this.$trigger[isActive ? 'on' : ' off']('click', $.proxy(function(e) {
+    this.$trigger[isActive ? 'on' : ' off']('click', $.proxy(function() {
       this.toggle();
     }, this));
 

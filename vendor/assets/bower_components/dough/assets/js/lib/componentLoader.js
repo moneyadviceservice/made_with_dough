@@ -31,10 +31,11 @@ define(['jquery', 'rsvp'], function($, RSVP) {
     /**
      * Create components based on the supplied DOM fragment (or document if not supplied)
      * @param {jQuery} [$container]
+     * @param {boolean} [includeDeferred] - Includes deferred objects when initialising components
      * @returns {object} - a promise that will resolve or reject depending on whether all modules
      * initialise successfully
      */
-    init: function($container) {
+    init: function($container, includeDeferred) {
       var componentsToCreate,
           instantiatedList,
           initialisedList,
@@ -44,13 +45,14 @@ define(['jquery', 'rsvp'], function($, RSVP) {
       this.components = {};
       // if no DOM fragment supplied, use the document
       $container = $container || $('body');
-      componentsToCreate = this._listComponentsToCreate($container);
+      componentsToCreate = this._listComponentsToCreate($container, includeDeferred || false);
       instantiatedList = this._createPromises(componentsToCreate);
       initialisedList = this._createPromises(componentsToCreate);
       if (componentsToCreate.length) {
         this._instantiateComponents(componentsToCreate, instantiatedList.deferreds);
         // Wait until all components are instantiated before initialising them in a second pass
-        RSVP.allSettled(instantiatedList.promises).then(function() {
+        RSVP.allSettled(instantiatedList.promises).then(function(results) {
+          self._checkForFailedInstantiations(results, initialisedList.deferreds);
           self._initialiseComponents(self.components, initialisedList.deferreds);
         });
       }
@@ -61,19 +63,34 @@ define(['jquery', 'rsvp'], function($, RSVP) {
       return promises;
     },
 
+    _checkForFailedInstantiations: function(results, initialisedList) {
+      $.each(results, function(idx, obj) {
+        if ((obj.state === 'rejected') && (obj.reason.description === 'SINGLETON-DUPLICATE')) {
+          initialisedList[idx].resolve();
+          initialisedList.splice(idx, 1);
+        }
+      });
+    },
+
     /**
      * Make an array of objects, each containing pointers to a component container and name
      * @param {object} $container
+     * @param {boolean} [includeDeferred] - Includes deferred objects when initialising components
      * @returns {Array}
      * @private
      */
-    _listComponentsToCreate: function($container) {
+    _listComponentsToCreate: function($container, includeDeferred) {
       var componentsToCreate = [],
           $els,
           $el,
-          attrs;
+          attrs,
+          selector = '[data-dough-component]';
 
-      $els = $container.find('[data-dough-component]');
+      if (!includeDeferred) {
+        selector += ':not([data-dough-defer])';
+      }
+
+      $els = $container.is(selector)? $container : $container.find(selector);
       $els.each(function() {
         $el = $(this);
         attrs = $el.attr('data-dough-component').split(' ');
@@ -136,12 +153,19 @@ define(['jquery', 'rsvp'], function($, RSVP) {
           config = this._parseConfig($el, componentName);
 
       require([componentName], function(Constr) {
-        config.componentName = componentName;
-        if (!self.components[componentName]) {
-          self.components[componentName] = [];
+        if (!Constr.isSingleton || !self.components[componentName]) {
+          config.componentName = componentName;
+          if (!self.components[componentName]) {
+            self.components[componentName] = [];
+          }
+          self.components[componentName].push(new Constr($el, config));
+          instantiated.resolve();
+        } else {
+          instantiated.reject({
+            componentName: componentName,
+            description: 'SINGLETON-DUPLICATE'
+          });
         }
-        self.components[componentName].push(new Constr($el, config));
-        instantiated.resolve();
       });
     },
 

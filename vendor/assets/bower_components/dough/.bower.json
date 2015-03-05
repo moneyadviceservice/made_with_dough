@@ -17,13 +17,13 @@
     "jquery": "latest",
     "jqueryThrottleDebounce": "https://github.com/cowboy/jquery-throttle-debounce.git"
   },
-  "_release": "4c39a088fe",
+  "_release": "afd2d133d1",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "4c39a088feca62532f7e95b0ca4c1ef55bfc8951"
+    "commit": "afd2d133d102c35a63aab13062f24d4db660b581"
   },
-  "_source": "/Users/yomicolledge/.rvm/gems/ruby-2.1.2/bundler/gems/dough-4c39a088feca",
+  "_source": "/Users/bbarnett/.rvm/gems/ruby-2.1.2@dough/bundler/gems/dough-afd2d133d102",
   "_target": "*",
-  "_originalSource": "/Users/yomicolledge/.rvm/gems/ruby-2.1.2/bundler/gems/dough-4c39a088feca"
+  "_originalSource": "/Users/bbarnett/.rvm/gems/ruby-2.1.2@dough/bundler/gems/dough-afd2d133d102"
 }
