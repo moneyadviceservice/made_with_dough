@@ -1,9 +1,0 @@
-// Collapsible sections. The first section will automatically be set to open on load, with any further sections closed (collapsed).
-//
-// Styleguide Collapsable
-.js .collapsable__target {
-  display: none;
-  &.is-active {
-    display: block;
-  }
-}

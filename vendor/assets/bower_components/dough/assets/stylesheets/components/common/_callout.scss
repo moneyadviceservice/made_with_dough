@@ -1,9 +1,0 @@
-.callout {
-  // prevents the callout from collapsing.
-  // Note: extending clearfix instead of including it does not work.
-  @include clearfix();
-}
-
-.callout--instructional {
-  background-color: $color-panel-background;
-}
