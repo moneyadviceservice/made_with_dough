@@ -1,0 +1,26 @@
+{
+  "name": "yeast",
+  "homepage": "https://github.com/moneyadviceservice/yeast",
+  "authors": [
+    "Ben Barnett <ben.barnett@moneyadviceservice.org.uk>"
+  ],
+  "description": "Shared SASS mixins, variables and functions for MAS",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "ecb6394fdd",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ecb6394fdd6b86f00ba39a2c650621194295686c"
+  },
+  "_source": "git://github.com/moneyadviceservice/yeast.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/moneyadviceservice/yeast.git"
+}
