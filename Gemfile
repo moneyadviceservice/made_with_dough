@@ -36,6 +36,6 @@ gem 'mas-development_dependencies', github: 'moneyadviceservice/mas-development_
 
 gem 'redcarpet'
 
-gem 'dough-ruby', '~> 4.0', github: 'moneyadviceservice/dough'
+gem 'dough-ruby', github: 'moneyadviceservice/dough'
 
 gem 'bowndler', github: 'moneyadviceservice/bowndler'

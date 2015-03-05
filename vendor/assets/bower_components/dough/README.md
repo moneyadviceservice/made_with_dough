@@ -1,6 +1,6 @@
 # Dough
 
-The Money Advice Service's frontend assets.
+A reusable UI component library from the Money Advice Service, free for use on any Rails based project. More info and a fuller introduction available [on our blog](http://making.moneyadviceservice.org.uk/2015/01/making-with-dough/).
 
 [![Code Climate](https://codeclimate.com/github/moneyadviceservice/dough/badges/gpa.svg)](https://codeclimate.com/github/moneyadviceservice/dough)
 
@@ -22,6 +22,7 @@ $ git clone https://github.com/moneyadviceservice/dough.git
 Make sure all dependencies are available:
 
 ```sh
+$ npm install -g bower
 $ bower install
 $ npm install
 ```
@@ -79,7 +80,7 @@ rm -r tmp/cache
 Make sure you ran npm install.
 
 ```sh
-$ ./node_modules/karma/bin/karma start test/karma.conf.js --single-run
+$ ./node_modules/karma/bin/karma start spec/js/karma.conf.js --single-run
 ```
 
 ## Javascript style checking
@@ -91,6 +92,16 @@ Make sure you ran npm install.
 
 ```
 ./node_modules/jscs/bin/jscs js
+```
+
+To prevent commiting JavaScript files that violate JSHint and JSCS rules:
+
+```shell
+cat > .git/hooks/pre-commit <<EOF
+!/bin/sh
+./script/git-pre-commit-jshint.sh
+EOF
+chmod +x .git/hooks/pre-commit
 ```
 
 ## Contributing
