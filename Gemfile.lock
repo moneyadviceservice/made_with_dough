@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/moneyadviceservice/dough.git
-  revision: 156c3a2ad63339da1aaab19617fdb06fe693da33
+  revision: e4ab3730313a950c004c7780802a04cddcef8739
   specs:
-    dough-ruby (5.7.0)
+    dough-ruby (5.7.1)
       activesupport
       rails (>= 3.2)
       sass-rails (~> 4.0.0)
@@ -80,7 +80,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.6.1)
     minitest (5.7.0)
-    multi_json (1.11.0)
+    multi_json (1.11.1)
     parser (2.2.0.pre.7)
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
@@ -89,7 +89,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rack (1.5.3)
+    rack (1.5.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.6)
