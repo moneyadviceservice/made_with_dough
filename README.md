@@ -2,6 +2,18 @@
 
 This is the example website for our Dough components. It is available online at [http://www.madewithdough.org.uk](http://www.madewithdough.org.uk).
 
+## Local setup
+
+In order to run this project locally, install dependencies, and start a Rails server.
+```sh
+$ bundle install
+$ bowndler install
+$ rails s
+```
+## Deployment and hosting
+
+The live site (madewithdough.org.uk)  is hosted on Heroku - for more information on Heroku deployments see the [MAS wiki page](https://moneyadviceserviceuk.atlassian.net/wiki/pages/viewpage.action?pageId=63635501).
+
 ## How Dough works in a nutshell
 
 Dough components use data attributes to initialise themselves on page load. This is handled by [ComponentLoader](https://github.com/moneyadviceservice/dough/blob/master/assets/js/lib/componentLoader.js). It looks for markup that is stamped with these attributes:
