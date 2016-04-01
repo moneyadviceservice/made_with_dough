@@ -12,7 +12,13 @@ $ rails s
 ```
 ## Deployment and hosting
 
-The live site (madewithdough.org.uk)  is hosted on Heroku - for more information on Heroku deployments see the [MAS wiki page](https://moneyadviceserviceuk.atlassian.net/wiki/pages/viewpage.action?pageId=63635501).
+The live site (madewithdough.org.uk) is hosted on Heroku.
+
+To make a new deployment follow the standard Heroku instructions but you must specify a custom buildpack **before** pushing code to the Heroku git repository:
+
+```sh
+$ heroku buildpacks:set https://github.com/moneyadviceservice/heroku-buildpack-ruby-bowndler
+```
 
 ## How Dough works in a nutshell
 
